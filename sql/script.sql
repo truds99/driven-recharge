@@ -7,7 +7,8 @@ CREATE TABLE carriers (
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  document CHAR(11) NOT NULL UNIQUE
+  document CHAR(11) NOT NULL UNIQUE,
+  CHECK (document ~ '^[0-9]{11}$')
 );
 
 CREATE TABLE phones (
@@ -15,14 +16,16 @@ CREATE TABLE phones (
   description text NOT NULL,
   number CHAR(11) NOT NULL UNIQUE,
   customer_document CHAR(11) NOT NULL REFERENCES customers(document),
-  carrier_id INT NOT NULL REFERENCES carriers(id)
+  carrier_id INT NOT NULL REFERENCES carriers(id),
+  CHECK (number ~ '^[0-9]{10,11}$')
 );
 
 CREATE TABLE recharges (
     id SERIAL PRIMARY KEY,
     phone_id INT NOT NULL REFERENCES phones(id),
-    value INT NOT NULL
-)
+    value INT NOT NULL,
+    CHECK (value >= 1000 AND value <= 100000)
+);
 
 INSERT INTO carriers (name, code) VALUES ('Vivo', 15);
 INSERT INTO carriers (name, code) VALUES ('Tim', 41);
