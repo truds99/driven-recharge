@@ -1,8 +1,8 @@
 import joi from "joi";
 
-const validDescriptions = ['personal', 'professional', 'home', 'other', 'work'];
+const validDescriptions = ['personal', 'work', 'home', 'other'];
 
-export const phoneSchema = joi.object({
+export const postPhoneSchema = joi.object({
     name: joi.string().required().trim(),
     customer_document: joi.string().length(11).pattern(/^\d+$/).required(),
     carrier_id: joi.number().integer().positive().required(),
