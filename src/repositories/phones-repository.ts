@@ -7,21 +7,12 @@ export async function postPhoneRep(document, number, carrier_id, description) {
     `, [document, number, carrier_id, description]);
 }
 
-export async function getPhonesByDocumentRep(document) {
+export async function getPhonesBySomethingRep(column: string, value: string) {
     const phones = await db.query(`
         SELECT * FROM phones
-        WHERE customer_document = $1;
-    `, [document]);
+        WHERE ${column} = $1;
+    `, [value]);
 
     return phones;
-}
-
-export async function getPhoneRep(number) {
-    const phone = await db.query(`
-        SELECT * FROM phones
-        WHERE number = $1;
-    `, [number]);
-
-    return phone;
 }
 

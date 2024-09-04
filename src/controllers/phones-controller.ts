@@ -1,6 +1,7 @@
 import httpStatus from "http-status";
 import { Request, Response } from "express";
 import { getCarrierName, postPhoneService } from "../services/phones-service";
+import { getPhonesBySomethingRep } from "../repositories/phones-repository";
 
 export async function postPhone(req: Request, res: Response) {
     await postPhoneService(req.body);
@@ -21,3 +22,10 @@ export async function postPhone(req: Request, res: Response) {
 
     res.status(httpStatus.CREATED).send(phoneRegister);
 } 
+
+export async function getPhonesByCostumer(req: Request, res: Response) {
+    const { document } = req.params;
+    const phones = await getPhonesBySomethingRep('customer_document', document);
+
+    res.status(httpStatus.OK).send(phones.rows);
+}
