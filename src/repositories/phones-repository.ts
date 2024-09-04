@@ -16,3 +16,12 @@ export async function getPhonesByDocumentRep(document) {
     return phones;
 }
 
+export async function getPhoneRep(number) {
+    const phone = await db.query(`
+        SELECT * FROM phones
+        WHERE number = $1;
+    `, [number]);
+
+    return phone;
+}
+

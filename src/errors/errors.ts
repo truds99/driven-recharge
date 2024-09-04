@@ -6,3 +6,10 @@ export function threePhonesOfDocumentError(): CustomError {
         message: 'this document has already three phones'
     }
 }
+
+export function phoneAlreadyRegisteredError(): CustomError {
+    return {
+        name: 'conflict',
+        message: 'this phone is already registered'
+    }
+}
