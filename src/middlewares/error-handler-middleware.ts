@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { CustomError } from '../protocols/protocols'
 
 function errorHandlerMiddleware(
-  e,
+  e: CustomError,
   req: Request,
   res: Response,
   next: NextFunction

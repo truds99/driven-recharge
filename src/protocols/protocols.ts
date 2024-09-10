@@ -3,7 +3,7 @@ export type CustomError = {
     message: string;
 } & Error;
 
-export type RegisterData = {
+export type RegisterPhoneData = {
     name: string, 
     customer_document: string, 
     number: string, 
@@ -11,6 +11,12 @@ export type RegisterData = {
     description: string
 }
 
-export type PhoneData = Omit<RegisterData, "name">
+export type PhoneData = Omit<RegisterPhoneData, "name">
 
 export type Phone = PhoneData & { id: number };
+
+export type Customer = {
+    id: number,
+    name: string,
+    document: string
+}
