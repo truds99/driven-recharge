@@ -16,3 +16,4 @@ export async function postCustomerRep(name: string, document: string) {
         VALUES ($1, $2)
     `, [name, document]);
 }
+

@@ -1,8 +1,8 @@
 import httpStatus from "http-status";
 import { Request, Response } from "express";
 import { postPhoneService } from "../services/phones-service";
+import { Phone, RegisterPhoneData } from "../protocols/protocols";
 import { getPhonesBySomethingRep } from "../repositories/phones-repository";
-import { RegisterPhoneData } from "../protocols/protocols";
 
 export async function postPhone(req: Request, res: Response) {
     const registerData = req.body as RegisterPhoneData;

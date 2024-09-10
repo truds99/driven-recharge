@@ -14,7 +14,7 @@ export function phoneAlreadyRegisteredError(): CustomError {
     }
 }
 
-export function invalidColumnError(): CustomError {
+export function invalidParametersError(): CustomError {
     return {
         name: 'unprocessable_entity',
         message: 'invalid parameters'

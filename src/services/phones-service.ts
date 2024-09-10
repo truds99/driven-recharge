@@ -14,7 +14,7 @@ export async function postPhoneService(registerData: RegisterPhoneData){
     if (!customer.rowCount) await postCustomerRep(name, registerData.customer_document);
     
     const phone = (await getPhonesBySomethingRep('number', registerData.number));
-    if(phone.rowCount) throw phoneAlreadyRegisteredError();
+    if(phone.rows) throw phoneAlreadyRegisteredError();
 
     const register = await postPhoneRep(phoneData);
     return register;
