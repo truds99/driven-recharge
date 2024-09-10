@@ -1,5 +1,6 @@
 import { Phone, PhoneData } from "../protocols/protocols";
 import db from "../database";
+import { invalidColumnError } from "../errors/errors";
 
 export async function postPhoneRep(phoneData: PhoneData) {
     const { customer_document, number, carrier_id, description } = phoneData;
@@ -13,7 +14,13 @@ export async function postPhoneRep(phoneData: PhoneData) {
     return result;
 }
 
-export async function getPhonesBySomethingRep(column: string, value: string) {
+export async function getPhonesBySomethingRep(column: string, value: string | number) {
+
+    const allowedColumns = ['id', 'number', 'carrier_id', 'description', 'customer_document'];
+    if (!allowedColumns.includes(column)) {
+        throw invalidColumnError();
+    }
+
     const phones = await db.query<Phone[]>(`
         SELECT * FROM phones
         WHERE ${column} = $1;

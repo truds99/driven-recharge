@@ -1,5 +1,5 @@
 import joi from "joi";
-import { RegisterPhoneData } from "protocols/protocols";
+import { RegisterPhoneData } from "../protocols/protocols";
 
 const validDescriptions = ['personal', 'work', 'home', 'other'];
 

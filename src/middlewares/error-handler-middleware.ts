@@ -10,6 +10,8 @@ function errorHandlerMiddleware(
 ) {
  
     if (e.name === 'conflict') return res.status(httpStatus.CONFLICT).send(e.message);
+    if (e.name === 'not_found') return res.status(httpStatus.NOT_FOUND).send(e.message);
+    if (e.name === 'unprocessable_entity') return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(e.message);
     res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e.message);
 }
 

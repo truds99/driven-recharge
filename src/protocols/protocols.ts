@@ -20,3 +20,10 @@ export type Customer = {
     name: string,
     document: string
 }
+
+export type RechargeData = {
+    phone_id: number,
+    value: number
+}
+
+export type Recharge = RechargeData & { id: number };
