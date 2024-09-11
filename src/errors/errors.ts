@@ -21,9 +21,10 @@ export function invalidParametersError(): CustomError {
     }
 }
 
-export function phoneNotFoundError(): CustomError {
+export function notFoundError(entity: string): CustomError {
     return {
         name: 'not_found',
-        message: 'phone not registered'
+        message: `${entity} not found`
     }
 }
+

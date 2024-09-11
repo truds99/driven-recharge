@@ -19,7 +19,7 @@ export async function getRechargesBySomethingRep(column: string, value: number) 
 
     if (!allowedColumns.includes(column)) throw invalidParametersError();
         
-    const items = await db.query<Recharge[]>(`
+    const items = await db.query<Recharge>(`
         SELECT * FROM recharges
         WHERE ${column} = $1;
     `, [value]);

@@ -5,6 +5,7 @@ import { phonesRouter } from "../src/routers/phones-router";
 import cors from "cors";
 import errorHandlerMiddleware from '../src/middlewares/error-handler-middleware'
 import { rechargesRouter } from "../src/routers/recharges-router";
+import { summaryRouter } from "../src/routers/summary-router";
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(json());
 
 app.use(phonesRouter);
 app.use(rechargesRouter);
+app.use(summaryRouter);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5000;

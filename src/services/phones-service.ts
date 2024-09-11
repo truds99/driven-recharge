@@ -14,8 +14,23 @@ export async function postPhoneService(registerData: RegisterPhoneData){
     if (!customer.rowCount) await postCustomerRep(name, registerData.customer_document);
     
     const phone = (await getPhonesBySomethingRep('number', registerData.number));
-    if(phone.rows) throw phoneAlreadyRegisteredError();
+    if(phone.rowCount) throw phoneAlreadyRegisteredError();
 
     const register = await postPhoneRep(phoneData);
     return register;
+}
+
+export function getCarrier(id: number) {
+    switch (id) {
+        case 1:
+          return { name: 'Vivo', code: 15 };
+        case 2:
+          return { name: 'Tim', code: 41 };
+        case 3:
+          return { name: 'Oi', code: 31 };
+        case 4:
+          return { name: 'Claro', code: 21 };
+        default:
+          return { name: 'Unknown carrier', code: 0 };
+      }
 }

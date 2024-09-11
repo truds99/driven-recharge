@@ -27,3 +27,19 @@ export type RechargeData = {
 }
 
 export type Recharge = RechargeData & { id: number };
+
+export type Summary = {
+    document: string,
+    phones: {
+        number: string,
+        description: string,
+        carrier: {
+            name: string,
+            code: number
+        }
+        recharges: {
+            id: number
+            value: number
+        } []
+    } []
+}

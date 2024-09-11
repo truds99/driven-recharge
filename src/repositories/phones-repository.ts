@@ -19,7 +19,7 @@ export async function getPhonesBySomethingRep(column: string, value: string | nu
 
     if (!allowedColumns.includes(column)) throw invalidParametersError();
 
-    const items = await db.query<Phone[]>(`
+    const items = await db.query<Phone>(`
         SELECT * FROM phones
         WHERE ${column} = $1;
     `, [value]);
