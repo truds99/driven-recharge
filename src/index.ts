@@ -1,11 +1,11 @@
 import express, { json } from "express";
 import 'express-async-errors'
 import dotenv from "dotenv";
-import { phonesRouter } from "../src/routers/phones-router";
+import { phonesRouter } from "./routers/phones-router";
 import cors from "cors";
-import errorHandlerMiddleware from '../src/middlewares/error-handler-middleware'
-import { rechargesRouter } from "../src/routers/recharges-router";
-import { summaryRouter } from "../src/routers/summary-router";
+import errorHandlerMiddleware from './middlewares/error-handler-middleware'
+import { rechargesRouter } from "./routers/recharges-router";
+import { summaryRouter } from "./routers/summary-router";
 
 dotenv.config();
 const app = express();
