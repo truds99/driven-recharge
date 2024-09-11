@@ -6,7 +6,7 @@ CREATE TABLE carriers (
 
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
-  name name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
   document CHAR(11) NOT NULL UNIQUE,
   CHECK (document ~ '^[0-9]{11}$')
 );
